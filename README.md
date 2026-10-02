@@ -37,6 +37,7 @@ echo '{"line":"Hadi bakalım"}' | claude plugin configure bismillah@miscic --val
 ```
 
 Boş bırakırsan hiçbir şey eklenmez. Değişiklik Claude Code yeniden başlatılınca geçerli olur.
+Kurulumda çıkan "userConfig option not yet set" uyarısı isteğe bağlı bu ayar içindir; hiç ayarlamazsan varsayılan kullanılır.
 
 **Nasıl çalışır:** `session.append` kancası prompt'undan sonraki ilk metinli cevap satırının id'sini kaydeder; `ui.render` (`AssistantMessage`) o satır çizilirken başına açılış satırını ekler.
 
@@ -69,7 +70,7 @@ Civciv emojisi yazı tipinin renkli çizimidir; terminalin renkli emoji destekle
 /reload-plugins
 ```
 
-- **bismillah** — opens every reply to your prompts with a line of your choice. The default is *Bismillahirrahmanirrahim* ("In the name of God, the Most Gracious, the Most Merciful"), which many Muslims say before starting any work. Display only. Change it with `/plugin configure bismillah@miscic` (empty shows nothing; restart to apply).
+- **bismillah** — opens every reply to your prompts with a line of your choice. The default is *Bismillahirrahmanirrahim* ("In the name of God, the Most Gracious, the Most Merciful"), which many Muslims say before starting any work. Display only. Change it with `/plugin configure bismillah@miscic` (empty shows nothing; restart to apply). The "userConfig option not yet set" notice at install is about this optional setting; unset means the default.
 - **tavuk** ("chicken" in Turkish) — a little 🐤 walks right-to-left along the band above the prompt, pecking at the letters of your prompts and leaving crumbs. It teleports back to the right edge when it reaches the left. `/tavuk` hides or shows it.
 
 License: MIT
