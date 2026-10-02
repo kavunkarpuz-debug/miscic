@@ -1,12 +1,17 @@
 {
-  "name": "bismillah-mod",
+  "name": "miscic",
   "owner": { "name": "kavunkarpuz-debug" },
-  "description": "Bismillahirrahmanirrahim mod for Claude Code",
+  "description": "Miscellaneous small mods for Claude Code",
   "plugins": [
     {
       "name": "bismillah",
       "source": "./bismillah",
-      "description": "Claude Code mod: every reply to your prompt opens with a line of your choice (default: Bismillahirrahmanirrahim)"
+      "description": "Every reply to your prompt opens with a line of your choice (default: Bismillahirrahmanirrahim)"
+    },
+    {
+      "name": "tavuk",
+      "source": "./tavuk",
+      "description": "A little chick walks along the band above the prompt and pecks the letters of your prompts"
     }
   ]
 }

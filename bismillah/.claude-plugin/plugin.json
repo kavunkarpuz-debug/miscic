@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "Kullanıcının her prompt'una verilen cevabı ayarlanabilir bir açılış satırıyla başlatır (varsayılan: Bismillahirrahmanirrahim)",
   "author": { "name": "kavunkarpuz-debug" },
-  "repository": "https://github.com/kavunkarpuz-debug/bismillah-mod",
+  "repository": "https://github.com/kavunkarpuz-debug/miscic",
   "license": "MIT",
   "types": "./types/index.d.ts",
   "userConfig": {

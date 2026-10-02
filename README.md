@@ -1,6 +1,24 @@
-# bismillah — Claude Code mod
+# miscic — Claude Code için karışık modlar
 
-Claude Code'a gönderdiğin her prompt'a verilen cevap, seçtiğin bir satırla açılır. Varsayılan: **Bismillahirrahmanirrahim**.
+Claude Code **2.1.287** veya üstü gerekir (`claude --version`). Önce marketplace'i bir kez ekle, sonra istediğin modu kur:
+
+```
+/plugin marketplace add kavunkarpuz-debug/miscic
+/plugin install bismillah@miscic
+/plugin install tavuk@miscic
+/reload-plugins
+```
+
+Her mod ayrı kurulur, ayrı kapatılır: `/plugin uninstall <mod>@miscic`
+
+| Mod | Ne yapar |
+|---|---|
+| [bismillah](#bismillah) | Her cevap seçtiğin bir satırla açılır (varsayılan: *Bismillahirrahmanirrahim*) |
+| [tavuk](#tavuk) | Prompt'un üstündeki şeritte sarı bir civciv yürüyüp prompt'unun harflerini gagalar |
+
+## bismillah
+
+Claude Code'a gönderdiğin her prompt'a verilen cevap, seçtiğin bir satırla açılır:
 
 ```
 > merhaba
@@ -9,67 +27,49 @@ Claude Code'a gönderdiğin her prompt'a verilen cevap, seçtiğin bir satırla 
   Merhaba! ...
 ```
 
-- Sadece senin yazdığın promptların cevabında, cevabın ilk metin bloğunda çıkar; araç çağrıları arasındaki ara metinlerde tekrar etmez.
+- Sadece senin yazdığın promptların cevabında, cevabın ilk metin bloğunda çıkar.
 - Yalnızca ekranda görünür: modele gönderilmez, konuşma kaydını değiştirmez.
 
-## Kurulum
-
-Claude Code **2.1.287** veya üstü gerekir (`claude --version`). Claude Code içinde:
-
-```
-/plugin marketplace add kavunkarpuz-debug/bismillah-mod
-/plugin install bismillah@bismillah-mod
-/reload-plugins
-```
-
-Kaldırmak için: `/plugin uninstall bismillah@bismillah-mod`
-
-## Açılış satırını değiştirmek
-
-Varsayılan metin *Bismillahirrahmanirrahim*. İstediğin başka bir satırla değiştirebilirsin. Boş bırakırsan hiçbir şey eklenmez.
-
-Claude Code içinde `/plugin configure bismillah@bismillah-mod`, ya da terminalde:
+**Satırı değiştirmek:** Claude Code içinde `/plugin configure bismillah@miscic`, ya da terminalde:
 
 ```bash
-echo '{"line":"Hadi bakalım"}' | claude plugin configure bismillah@bismillah-mod --values-stdin
+echo '{"line":"Hadi bakalım"}' | claude plugin configure bismillah@miscic --values-stdin
 ```
 
-Değişiklik Claude Code yeniden başlatılınca geçerli olur.
+Boş bırakırsan hiçbir şey eklenmez. Değişiklik Claude Code yeniden başlatılınca geçerli olur.
 
-## Nasıl çalışır
+**Nasıl çalışır:** `session.append` kancası prompt'undan sonraki ilk metinli cevap satırının id'sini kaydeder; `ui.render` (`AssistantMessage`) o satır çizilirken başına açılış satırını ekler.
 
-`bismillah/hooks/register.tsx`, iki kancadan oluşur:
+## tavuk
 
-1. `session.append` — senin prompt'undan sonra gelen ilk metinli cevap satırının id'sini oturum durumuna kaydeder.
-2. `ui.render` (`AssistantMessage`) — o satır çizilirken metnin başına ayarlanan açılış satırını ekler.
+Prompt kutusunun üstündeki şeritte bir 🐤 dolaşır:
 
-Test: `claude plugin test ./bismillah`
+```
+   m     r       🐤 ·    a              b
+> _
+```
+
+- Gönderdiğin her prompt'un harfleri şeride yem olarak saçılır.
+- Civciv sağ uçtan sola yürür, önüne gelen harfi gagalar. Bazen ıskalar, harf titrer; yediği harfin yerinde `·` kırıntı kalır.
+- Sol uca varınca sağ uca ışınlanır. Yem bitince bir süre aç gezer, sonra rastgele harfler saçılır.
+- `/tavuk` civcivi gizler / geri getirir.
+
+Civciv emojisi yazı tipinin renkli çizimidir; terminalin renkli emoji desteklemesi gerekir (Windows Terminal, macOS Terminal, iTerm2 vb.).
 
 ---
 
 ## English
 
-A Claude Code mod that opens every reply to your prompt with a line of your choice. The default is **Bismillahirrahmanirrahim** ("In the name of God, the Most Gracious, the Most Merciful"), which many Muslims say before starting any work.
-
-- Shown only on replies to prompts you typed, on the first text block of the reply.
-- Display only: nothing is sent to the model and the transcript is not changed.
-
-**Install** (requires Claude Code 2.1.287+), inside Claude Code:
+**miscic** — miscellaneous small mods for Claude Code (requires 2.1.287+).
 
 ```
-/plugin marketplace add kavunkarpuz-debug/bismillah-mod
-/plugin install bismillah@bismillah-mod
+/plugin marketplace add kavunkarpuz-debug/miscic
+/plugin install bismillah@miscic
+/plugin install tavuk@miscic
 /reload-plugins
 ```
 
-Uninstall: `/plugin uninstall bismillah@bismillah-mod`
-
-**Change the line:** `/plugin configure bismillah@bismillah-mod` inside Claude Code, or in a terminal:
-
-```bash
-echo '{"line":"Ready when you are"}' | claude plugin configure bismillah@bismillah-mod --values-stdin
-```
-
-Leave it empty to show nothing. Restart Claude Code to apply the change.
+- **bismillah** — opens every reply to your prompts with a line of your choice. The default is *Bismillahirrahmanirrahim* ("In the name of God, the Most Gracious, the Most Merciful"), which many Muslims say before starting any work. Display only. Change it with `/plugin configure bismillah@miscic` (empty shows nothing; restart to apply).
+- **tavuk** ("chicken" in Turkish) — a little 🐤 walks right-to-left along the band above the prompt, pecking at the letters of your prompts and leaving crumbs. It teleports back to the right edge when it reaches the left. `/tavuk` hides or shows it.
 
 License: MIT

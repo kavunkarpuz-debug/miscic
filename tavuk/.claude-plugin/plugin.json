@@ -1,0 +1,9 @@
+{
+  "name": "tavuk",
+  "version": "0.2.0",
+  "description": "Prompt'un üstündeki şeritte sola yürüyüp prompt'unun harflerini gagalayan sarı civciv",
+  "author": { "name": "kavunkarpuz-debug" },
+  "repository": "https://github.com/kavunkarpuz-debug/miscic",
+  "license": "MIT",
+  "types": "./types/index.d.ts"
+}
