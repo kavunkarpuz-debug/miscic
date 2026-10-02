@@ -34,6 +34,8 @@ Claude Code içinde `/plugin configure bismillah@bismillah-mod`, ya da terminald
 echo '{"line":"Hadi bakalım"}' | claude plugin configure bismillah@bismillah-mod --values-stdin
 ```
 
+Değişiklik Claude Code yeniden başlatılınca geçerli olur.
+
 ## Nasıl çalışır
 
 `bismillah/hooks/register.tsx`, iki kancadan oluşur:
@@ -68,6 +70,6 @@ Uninstall: `/plugin uninstall bismillah@bismillah-mod`
 echo '{"line":"Ready when you are"}' | claude plugin configure bismillah@bismillah-mod --values-stdin
 ```
 
-Leave it empty to show nothing.
+Leave it empty to show nothing. Restart Claude Code to apply the change.
 
 License: MIT
