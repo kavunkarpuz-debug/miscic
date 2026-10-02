@@ -1,0 +1,12 @@
+{
+  "name": "bismillah-mod",
+  "owner": { "name": "kavunkarpuz-debug" },
+  "description": "Bismillahirrahmanirrahim mod for Claude Code",
+  "plugins": [
+    {
+      "name": "bismillah",
+      "source": "./bismillah",
+      "description": "Claude Code mod: every reply to your prompt opens with Bismillahirrahmanirrahim"
+    }
+  ]
+}

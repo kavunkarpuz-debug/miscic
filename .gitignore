@@ -1,0 +1,10 @@
+# Claude Code mod yuklenirken uretilen tip dosyalari
+.claude-plugin/types/
+
+# Gizli bilgi
+*.env
+.env*
+*credentials*
+*secrets*
+*-key*
+.claude/settings.local.json
