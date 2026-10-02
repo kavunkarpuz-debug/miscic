@@ -1,6 +1,6 @@
 # bismillah — Claude Code mod
 
-Claude Code'a gönderdiğin her prompt'a verilen cevap **Bismillahirrahmanirrahim** ile açılır:
+Claude Code'a gönderdiğin her prompt'a verilen cevap, seçtiğin bir satırla açılır. Varsayılan: **Bismillahirrahmanirrahim**.
 
 ```
 > merhaba
@@ -24,12 +24,22 @@ Claude Code **2.1.287** veya üstü gerekir (`claude --version`). Claude Code i�
 
 Kaldırmak için: `/plugin uninstall bismillah@bismillah-mod`
 
+## Açılış satırını değiştirmek
+
+Varsayılan metin *Bismillahirrahmanirrahim*. İstediğin başka bir satırla değiştirebilirsin. Boş bırakırsan hiçbir şey eklenmez.
+
+Claude Code içinde `/plugin configure bismillah@bismillah-mod`, ya da terminalde:
+
+```bash
+echo '{"line":"Hadi bakalım"}' | claude plugin configure bismillah@bismillah-mod --values-stdin
+```
+
 ## Nasıl çalışır
 
 `bismillah/hooks/register.tsx`, iki kancadan oluşur:
 
 1. `session.append` — senin prompt'undan sonra gelen ilk metinli cevap satırının id'sini oturum durumuna kaydeder.
-2. `ui.render` (`AssistantMessage`) — o satır çizilirken metnin başına besmeleyi ekler.
+2. `ui.render` (`AssistantMessage`) — o satır çizilirken metnin başına ayarlanan açılış satırını ekler.
 
 Test: `claude plugin test ./bismillah`
 
@@ -37,7 +47,7 @@ Test: `claude plugin test ./bismillah`
 
 ## English
 
-A Claude Code mod that opens every reply to your prompt with **Bismillahirrahmanirrahim** ("In the name of God, the Most Gracious, the Most Merciful").
+A Claude Code mod that opens every reply to your prompt with a line of your choice. The default is **Bismillahirrahmanirrahim** ("In the name of God, the Most Gracious, the Most Merciful"), which many Muslims say before starting any work.
 
 - Shown only on replies to prompts you typed, on the first text block of the reply.
 - Display only: nothing is sent to the model and the transcript is not changed.
@@ -51,5 +61,13 @@ A Claude Code mod that opens every reply to your prompt with **Bismillahirrahman
 ```
 
 Uninstall: `/plugin uninstall bismillah@bismillah-mod`
+
+**Change the line:** `/plugin configure bismillah@bismillah-mod` inside Claude Code, or in a terminal:
+
+```bash
+echo '{"line":"Ready when you are"}' | claude plugin configure bismillah@bismillah-mod --values-stdin
+```
+
+Leave it empty to show nothing.
 
 License: MIT

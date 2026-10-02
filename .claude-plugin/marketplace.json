@@ -6,7 +6,7 @@
     {
       "name": "bismillah",
       "source": "./bismillah",
-      "description": "Claude Code mod: every reply to your prompt opens with Bismillahirrahmanirrahim"
+      "description": "Claude Code mod: every reply to your prompt opens with a line of your choice (default: Bismillahirrahmanirrahim)"
     }
   ]
 }
